@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Drop a file{% endblock %}
+{% block content %}
+<section class="hero">
+  <p class="eyebrow">Simple. Local. Yours.</p>
+  <h1>Send a file<br><em>without the fuss.</em></h1>
+  <p class="intro">Choose a file, set how long it should stay available, and share the link with anyone on your network.</p>
+</section>
+<form class="upload-card" action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+  <label class="file-picker">
+    <span class="upload-icon">↑</span>
+    <span class="file-copy">
+      <strong>Choose a file to drop</strong>
+      <small>Any file type · Up to 2 GB</small>
+    </span>
+    <input type="file" name="file" required>
+    <span class="browse">Browse</span>
+  </label>
+  <fieldset>
+    <legend>Keep it available</legend>
+    <div class="options">
+      <label class="option"><input type="radio" name="expiration" value="download" checked><span>One download</span><small>Delete after it is downloaded</small></label>
+      <label class="option"><input type="radio" name="expiration" value="5m"><span>5 minutes</span></label>
+      <label class="option"><input type="radio" name="expiration" value="30m"><span>30 minutes</span></label>
+      <label class="option"><input type="radio" name="expiration" value="2h"><span>2 hours</span></label>
+      <label class="option"><input type="radio" name="expiration" value="forever"><span>Forever</span></label>
+    </div>
+  </fieldset>
+  <button class="primary-button" type="submit">Create a share link <span>→</span></button>
+</form>
+{% endblock %}

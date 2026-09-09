@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}File ready{% endblock %}
+{% block content %}
+<section class="result-card">
+  <div class="success-icon">✓</div>
+  <p class="eyebrow">Ready to share</p>
+  <h1>Your file is <em>waiting.</em></h1>
+  <p class="intro">Copy the link below and send it to someone on your local network.</p>
+  <div class="share-link"><a href="{{ url }}">{{ url }}</a></div>
+  <a class="secondary-button" href="{{ url_for('index') }}">Share another file <span>↗</span></a>
+</section>
+{% endblock %}

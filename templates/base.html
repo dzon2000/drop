@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10131a">
+  <title>{% block title %}Drop{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="shell">
+    <a class="brand" href="/" aria-label="Drop home">
+      <span class="brand-mark">↓</span>
+      <span>drop</span>
+    </a>
+    {% block content %}{% endblock %}
+    <footer>Private file sharing for your local network</footer>
+  </main>
+</body>
+</html>
