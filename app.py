@@ -8,9 +8,15 @@ import time
 from pathlib import Path
 from urllib.parse import quote
 
-from flask import Flask, after_this_request, jsonify, render_template, request, send_file
+from flask import (
+    Flask,
+    after_this_request,
+    jsonify,
+    render_template,
+    request,
+    send_file,
+)
 from werkzeug.utils import secure_filename
-
 
 EXPIRATIONS = {
     "download": None,
@@ -26,7 +32,7 @@ WORDS = (
 )
 
 app = Flask(__name__)
-app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("DROP_MAX_BYTES", 2 * 1024 * 1024 * 1024))
+app.config["MAX_CONTENT_LENGTH"] = int(os.getenv("DROP_MAX_BYTES", str(2 * 1024 * 1024 * 1024)))
 DATA_DIR = Path(os.getenv("DROP_DATA", "data"))
 PUBLIC_URL = os.getenv("DROP_PUBLIC_URL", "").rstrip("/")
 
