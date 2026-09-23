@@ -42,6 +42,11 @@ class DropTest(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b"/static/style.css", response.data)
 
+    def test_health_check(self):
+        response = self.client.get("/health")
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.get_json(), {"status": "ok"})
+
     def test_forever_file_can_be_downloaded_twice(self):
         response = self.client.post(
             "/upload",

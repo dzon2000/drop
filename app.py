@@ -80,6 +80,11 @@ def link_for(slug: str) -> str:
     return f"{base}/d/{quote(slug)}"
 
 
+@app.get("/health")
+def health():
+    return jsonify(status="ok")
+
+
 @app.get("/")
 def index():
     return render_template("index.html")

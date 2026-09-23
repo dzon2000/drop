@@ -13,6 +13,8 @@ Open `http://<host-ip>:8080/` from a device on the LAN. Uploaded files survive c
 
 The Docker image includes the Flask templates and static assets required by the web interface. Rebuild the image after changing files in `templates/` or `static/`.
 
+Docker monitors the service through `GET /health`. The endpoint returns HTTP 200 with `{"status":"ok"}` when the application is running.
+
 To make generated links use a LAN address or hostname:
 
 ```sh
