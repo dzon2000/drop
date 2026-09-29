@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import base64
+import io
 import json
 import os
 import secrets
@@ -8,6 +10,7 @@ import time
 from pathlib import Path
 from urllib.parse import quote
 
+import qrcode
 from flask import (
     Flask,
     after_this_request,
@@ -16,6 +19,7 @@ from flask import (
     request,
     send_file,
 )
+from qrcode.image.svg import SvgPathImage
 from werkzeug.utils import secure_filename
 
 EXPIRATIONS = {
@@ -80,6 +84,17 @@ def link_for(slug: str) -> str:
     return f"{base}/d/{quote(slug)}"
 
 
+def qr_code_data_uri(url: str) -> str:
+    code = qrcode.QRCode(box_size=8, border=4)
+    code.add_data(url)
+    code.make(fit=True)
+    image = code.make_image(image_factory=SvgPathImage)
+    output = io.BytesIO()
+    image.save(output)
+    encoded_image = base64.b64encode(output.getvalue()).decode("ascii")
+    return f"data:image/svg+xml;base64,{encoded_image}"
+
+
 @app.get("/health")
 def health():
     return jsonify(status="ok")
@@ -102,7 +117,7 @@ def upload():
     url = link_for(slug)
     if request.accept_mimetypes.best == "application/json":
         return jsonify(url=url)
-    return render_template("uploaded.html", url=url)
+    return render_template("uploaded.html", url=url, qr_code=qr_code_data_uri(url))
 
 
 @app.get("/d/<slug>")

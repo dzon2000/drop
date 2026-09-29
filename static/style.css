@@ -219,15 +219,27 @@ button {
     margin-bottom: 25px;
 }
 .share-link {
+    align-items: center;
     background: var(--surface-light);
     border: 1px solid var(--line);
     border-radius: 10px;
+    display: flex;
+    gap: 18px;
     margin: 26px 0;
     padding: 14px;
 }
 .share-link a {
     color: var(--accent);
+    flex: 1;
     overflow-wrap: anywhere;
+}
+.qr-code {
+    background: #fff;
+    border-radius: 6px;
+    flex: none;
+    height: 128px;
+    padding: 6px;
+    width: 128px;
 }
 .secondary-button {
     display: inline-block;
@@ -256,5 +268,13 @@ footer {
     .result-card {
         margin-top: 68px;
         padding: 27px;
+    }
+    .share-link {
+        gap: 12px;
+        padding: 10px;
+    }
+    .qr-code {
+        height: 96px;
+        width: 96px;
     }
 }

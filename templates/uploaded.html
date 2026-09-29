@@ -6,7 +6,10 @@
   <p class="eyebrow">Ready to share</p>
   <h1>Your file is <em>waiting.</em></h1>
   <p class="intro">Copy the link below and send it to someone on your local network.</p>
-  <div class="share-link"><a href="{{ url }}">{{ url }}</a></div>
+  <div class="share-link">
+    <a href="{{ url }}">{{ url }}</a>
+    <img class="qr-code" src="{{ qr_code }}" alt="QR code for download link">
+  </div>
   <a class="secondary-button" href="{{ url_for('index') }}">Share another file <span>↗</span></a>
 </section>
 {% endblock %}

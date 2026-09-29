@@ -1,6 +1,6 @@
 # Drop
 
-Drop is a simple self-hosted file sharing service for a trusted local network. It has no accounts or database. Each upload is stored under a random directory and receives an easy-to-read link such as `/d/quiet-maple-river`. The browser interface uses a responsive dark theme with static Flask templates and CSS.
+Drop is a simple self-hosted file sharing service for a trusted local network. It has no accounts or database. Each upload is stored under a random directory and receives an easy-to-read link such as `/d/quiet-maple-river`. The browser upload confirmation shows both the download link and a locally generated QR code for sharing it with another device.
 
 ## Docker
 
