@@ -23,6 +23,16 @@ docker run --rm -p 8080:8080 \
   -v "$PWD/data:/data" drop
 ```
 
+### Docker Compose behind the `pihole` network
+
+The included `compose.yaml` matches this setup:
+
+```sh
+docker compose up -d
+```
+
+It uses the `drop:1.0.1` image and the existing external `pihole` network, which must already exist. The service is not published on host ports; it is reachable to containers on `pihole` using the `VIRTUAL_HOST` value. This configuration does not mount `/data`, so uploaded files are not preserved if the container is removed.
+
 ## curl
 
 ```sh

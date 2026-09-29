@@ -1,0 +1,12 @@
+services:
+  drop:
+    image: drop:1.0.1
+    container_name: drop
+    environment:
+      VIRTUAL_HOST: drop.destroyer.home.net
+    networks:
+      - pihole
+
+networks:
+  pihole:
+    external: true
